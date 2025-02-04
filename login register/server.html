@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Server Monitoring</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .server {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .server p {
+      margin: 5px 0;
+    }
+    .status-up {
+      color: green;
+      font-weight: bold;
+    }
+    .status-down {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Server Monitoring Dashboard</h1>
+  <div id="status-container">
+    <!-- Server statuses will be displayed here -->
+  </div>
+
+  <script>
+    async function fetchServerStatus() {
+      try {
+        // Fetch server status from the backend
+        const response = await fetch('http://127.0.0.1:5000/server-status');
+        const servers = await response.json();
+
+        // Update the web interface
+        const statusContainer = document.getElementById('status-container');
+        statusContainer.innerHTML = ''; // Clear previous content
+
+        servers.forEach(server => {
+          const serverElement = document.createElement('div');
+          serverElement.classList.add('server');
+          serverElement.innerHTML = `
+            <p><strong>${server.name}</strong> (${server.ip})</p>
+            <p>Status: <span class="${server.status === 'up' ? 'status-up' : 'status-down'}">
+              ${server.status.toUpperCase()}
+            </span></p>
+          `;
+          statusContainer.appendChild(serverElement);
+        });
+      } catch (error) {
+        console.error('Error fetching server status:', error);
+      }
+    }
+
+    // Poll the server status every 2 seconds
+    setInterval(fetchServerStatus, 2000);
+    fetchServerStatus(); // Initial call
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+body {
+    font-family:Open Sans;
+    background-color: #222D51;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 10px; /* Add padding for smaller screens */
+    box-sizing: border-box; /* Ensure padding is considered in width calculations */
+  }
+  
+  .monitoring-data {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    width: 100%; /* Allow full width on smaller screens */
+    max-width: 400px; /* Limit the width for larger screens */
+    box-sizing: border-box;
+    
+  }
+  
+  .monitoring-data h1 {
+    font-size: 18px; 
+    margin-bottom: 20px;
+    color: #000;
+    white-space: nowrap; 
+    
+  }
+  
+  .monitoring-data p {
+    margin: 8px 0;
+    font-size: 16px;
+    padding-left: 60px;
+  }
+  
+  .monitoring-data .blue {
+    color: blue;
+    font-weight: bold;
+  }
+  
+  .monitoring-data .red {
+    color: red;
+    font-weight: bold;
+  }
+  
+  .monitoring-data .bold {
+    font-weight: bold;
+  }
+
+  .button{
+    background-color:#222D51;
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+    border-radius: 5px;
+  }
+  
+  .button:hover{
+    border: 1px solid #222D51;
+    background-color: white;
+    color: #222D51;
+  }
+
+  .dinith{
+    display: flex;
+    justify-content: center;
+  }
